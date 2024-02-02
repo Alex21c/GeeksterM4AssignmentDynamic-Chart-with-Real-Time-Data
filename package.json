@@ -1,0 +1,24 @@
+{
+  "author": "Abhishek Kumar",
+  "GitHub": "https://github.com/Alex21c",
+  "linkedIn": "https://www.linkedin.com/in/alex21c/",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "chart.js": "^4.4.1",
+    "core-js": "^3.35.1",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "parcel": {
+    "output": "dist",
+    "source": "src/index.html"
+  }
+}

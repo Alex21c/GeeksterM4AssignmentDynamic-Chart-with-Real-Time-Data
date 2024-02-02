@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 
+Command for Tailwind build || live cache refresh
+npx tailwindcss -i index.css -o tailwind.css --watch 
+*/
+
+:root {
+  --color-white: #FFFFFF;
+}
+
+*, ::before, ::after {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.displayNone {
+  display: none;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width:478px){
+
+  h1 span.assignmentTitle{
+    font-size:1.7rem;
+  }
+  h1 a.geeksterPromo{
+    font-size:1.2rem;
+  }
+  select#selectChartType{
+    padding:.5rem;
+  }
+  form{
+    margin:0;
+  }
+}
+
+@media screen and (max-width:385px){
+
+  h1 span.assignmentTitle{
+    font-size:1.5rem;
+  }
+  h1 a.geeksterPromo{
+    font-size:1rem;
+  }
+
+  table#tableInvestmentData tr{
+    width:18rem;
+  }
+  table#tableInvestmentData tr td.investmentName{
+    width:7rem;
+  }
+}
