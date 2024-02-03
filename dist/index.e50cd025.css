@@ -461,4 +461,18 @@ body {
   }
 }
 
+@media screen and (width <= 756px) {
+  div.wrapperCanvases {
+    grid-template-columns: 1fr;
+  }
+
+  h1 span.assignmentTitle {
+    font-size: 2rem;
+  }
+
+  h1 a {
+    font-size: 1.3rem;
+  }
+}
+
 /*# sourceMappingURL=index.e50cd025.css.map */
