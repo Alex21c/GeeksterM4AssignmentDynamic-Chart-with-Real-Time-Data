@@ -1,5 +1,5 @@
 # Assignment, Dynamic Chart with Real-Time Data (Geekster MERN Stack Module 4)
-Real time current price of Bitcoin, Ethereum and BinanceCoin will be fetched and rendered on chart using graph.js and animation provided using anime.js
+Real time current price of [Bitcoin](https://en.wikipedia.org/wiki/Bitcoin), [Ethereum](https://en.wikipedia.org/wiki/Ethereum) and [BinanceCoin](https://en.wikipedia.org/wiki/Binance) will be fetched and rendered on chart using graph.js and animation provided using anime.js
 
 ![](thumbnail.png)
 <!-- ![](mvcDiagram.png) -->
