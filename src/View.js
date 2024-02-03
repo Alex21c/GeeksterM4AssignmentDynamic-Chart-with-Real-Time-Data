@@ -7,28 +7,27 @@ class View{
   constructor(model){
     this.model = model;
     // initializing charts
-      this.chartFake = null;
-      this.chartGenuineBitCoin = null;
-      this.chartGenuineEthereum = null;
-      this.chartGenuineBinanceCoin = null;
-
-
 
       this.chartsData = {
         chartFake: {
+          name: 'chartFake',
+          chart: null,
           data: {
             labels: ['0s'],
             datasets: [{
               label: 'Fake Data (Math.random())',
-              data: [42000],
+              data: [1500],
               borderWidth: 1,
             }]
           },
           ctx: document.getElementById('chartFake'),
           width: 500,
-          height: 200
+          height: 200,
+          chartType: 'line'
         },
         chartGenuineBitCoin: {
+          name: 'chartGenuineBitCoin',
+          chart: null,
           data: {
             labels: ['0s'],
             datasets: [{
@@ -39,33 +38,40 @@ class View{
           },
           ctx: document.getElementById('chartGenuineBitCoin'),
           width: 500,
-          height: 200
+          height: 200,
+          chartType: 'line'
         },
         chartGenuineEthereum: {
+          name: 'chartGenuineEthereum',
+          chart: null,
           data: {
             labels: ['0s'],
             datasets: [{
               label: 'ETH (USD)',
-              data: [42000],
+              data: [2500],
               borderWidth: 1,
             }]
           },
           ctx : document.getElementById('chartGenuineEthereum'),
           width: 500,
-          height: 200
+          height: 200,
+          chartType: 'line'
         },
         chartGenuineBinanceCoin: {
+          name: 'chartGenuineBinanceCoin',
+          chart: null,
           data: {
             labels: ['0s'],
             datasets: [{
               label: 'BNB (USD)',
-              data: [42000],
+              data: [500],
               borderWidth: 1,
             }]
           },
           ctx: document.getElementById('chartGenuineBinanceCoin'),
           width: 500,
-          height: 200
+          height: 200,
+          chartType: 'line'
         }
         
       };
@@ -127,10 +133,11 @@ class View{
 
     // generating investment table
       // this.generateInvestmentTable();
-this.generateChart(this.chartFake, this.ctxChartFake, this.chartsData.chartFake, 'line', true);
-// this.generateChart(this.chartGenuineBitCoin, this.ctxChartGenuineBitCoin, this.chartsData.chartGenuineBitCoin, 'line');
-// this.generateChart(this.chartGenuineEthereum, this.ctxChartGenuineEthereum, this.chartsData.chartGenuineEthereum, 'line');
-// this.generateChart(this.chartGenuineBinanceCoin, this.ctxChartGenuineBinanceCoin, this.chartsData.chartGenuineBinanceCoin, 'line');
+// this.generateChart(this.chartFake, this.ctxChartFake, this.chartsData.chartFake, 'line', true);
+  this.generateChart(this.chartsData.chartFake);
+  this.generateChart(this.chartsData.chartGenuineBitCoin);
+  this.generateChart(this.chartsData.chartGenuineEthereum);
+  this.generateChart(this.chartsData.chartGenuineBinanceCoin);
 
 // this.selectChartType.classList.remove('displayNone'); 
 
@@ -142,21 +149,61 @@ this.generateChart(this.chartFake, this.ctxChartFake, this.chartsData.chartFake,
     // console.log(chart.data)
     let newLabel = (Number(chart.data.labels.at(-1).replace('s', '')) + 5  + 's');
     chart.data.labels.push(newLabel);
-    let newFakeData = (Math.random()*45000).toFixed(2);
+    let newFakeData = (Math.random()*1500).toFixed(2);
     chart.data.datasets[0].data.push(newFakeData);    
     chart.update();
   }
 
-  async updateGenuineChartData(chart){
+  async updateGenuineChartData(chart, chartName){
     // console.log('okay listened to you!', chart);
-    console.log(this.model.fetchedAPIData);
-    // let newLabel = (Number(chart.data.labels.at(-1).replace('s', '')) + 5  + 's');    
-    // chart.data.labels.push(newLabel);
+    // console.log(this.model.fetchedAPIData);
+    // console.log(chartName);
 
-    // let newFakeData = (Math.random()*45000).toFixed(2);
-    // chart.data.datasets[0].data.push(newFakeData);    
-    // chart.update();
-    
+
+    // console.log(chart.name)
+
+    let currentPrice = null;
+    let amIallowedToUpdateChart = false;
+    if(chartName === 'chartGenuineBitCoin'){
+      // console.log( this.model.fetchedAPIData.bitCoinCurrentPrice ,  this.model.fetchedAPIData.bitCoinPreviousPrice);
+      if(this.model.fetchedAPIData.bitCoinCurrentPrice === this.model.fetchedAPIData.bitCoinPreviousPrice){
+        // then there is no need to update chart 
+        console.warn('INFO: currentPrice and previousPrices are same for bitcoin, so no need to update the chart');
+        return;
+      }
+      // otherwise
+        currentPrice = this.model.fetchedAPIData.bitCoinCurrentPrice;
+        amIallowedToUpdateChart=true;
+    }else if(chartName === 'chartGenuineEthereum'){
+      // console.log(  this.model.fetchedAPIData.ethereumCurrentPrice ,  this.model.fetchedAPIData.ethereumPreviousPrice);
+      if(this.model.fetchedAPIData.ethereumCurrentPrice === this.model.fetchedAPIData.ethereumPreviousPrice){
+        // then there is no need to update chart 
+        console.warn('INFO: currentPrice and previousPrices are same for etherium, so no need to update the chart');
+        return;
+      }
+      // otherwise
+        currentPrice = this.model.fetchedAPIData.ethereumCurrentPrice;
+        amIallowedToUpdateChart=true;
+    }else if(chartName === 'chartGenuineBinanceCoin'){
+      // console.log(  this.model.fetchedAPIData.ethereumCurrentPrice ,  this.model.fetchedAPIData.ethereumPreviousPrice);
+      if(this.model.fetchedAPIData.ethereumCurrentPrice === this.model.fetchedAPIData.ethereumPreviousPrice){
+        // then there is no need to update chart 
+        console.warn('INFO: currentPrice and previousPrices are same for binanceCoin, so no need to update the chart');
+        return;
+      }
+      // otherwise
+        currentPrice = this.model.fetchedAPIData.ethereumCurrentPrice;
+        amIallowedToUpdateChart=true;
+    }
+
+
+    // update the chart
+      if(amIallowedToUpdateChart){
+        let newLabel = (Number(chart.data.labels.at(-1).replace('s', '')) + 5  + 's');    
+        chart.data.labels.push(newLabel);
+        chart.data.datasets[0].data.push(currentPrice);    
+        chart.update();    
+      }
     
   }
 
@@ -190,7 +237,9 @@ this.generateChart(this.chartFake, this.ctxChartFake, this.chartsData.chartFake,
   }
 
 
-  generateChart(chart, ctx, chartData, chartType){
+  generateChart(chartsData){
+    let chart = chartsData.chart;
+    
     
     if(chart){
       chart.destroy();
@@ -198,17 +247,18 @@ this.generateChart(this.chartFake, this.ctxChartFake, this.chartsData.chartFake,
     // console.log(chartData.data.labels);
     setTimeout(()=>{
       
-      chart = new Chart(ctx, {
-        type: chartType, // good one are: pie, bar, doughnut
-        data: {...chartData.data},
+      chart = new Chart(chartsData.ctx, {
+        type: chartsData.chartType, // good one are: pie, bar, doughnut
+        data: {...chartsData.data},
         options: {...this.chartMetadataTemplate.options}
       });
        //activate real time data fetch       
         setInterval(()=>{     
-          if(isItFakeChart){
+          if(chartsData.name === 'chartFake'){
+            // console.log(`i'm here`)
             this.updateFakeDataChart(chart);
           }else{
-            this.updateGenuineChartData(chart);
+            this.updateGenuineChartData(chart, chartsData.name);
           }     
         },5000);
 

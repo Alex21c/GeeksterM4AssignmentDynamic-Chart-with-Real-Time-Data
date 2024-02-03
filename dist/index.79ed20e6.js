@@ -585,12 +585,15 @@ parcelHelpers.defineInteropFlag(exports);
 class Model {
     constructor(){
         this.fetchedAPIData = {
-            bitCoin: 0,
-            ethereum: 0,
-            BinanceCoin: 0
+            bitCoinCurrentPrice: 0,
+            bitCoinPreviousPrice: 0,
+            ethereumCurrentPrice: 0,
+            ethereumPreviousPrice: 0,
+            BinanceCoinCurrentPrice: 0,
+            BinanceCoinPreviousPrice: 0
         };
-    // console.log(this.fetchCryptoData());
-    // this.requestDataEveryNSeconds();
+        // console.log(this.fetchCryptoData());
+        this.requestDataEveryNSeconds();
     }
     async requestDataEveryNSeconds(nSeconds = 15000) {
         // initially calling once
@@ -608,9 +611,16 @@ class Model {
             let data = await response.json();
             data.forEach((coin)=>{
                 // console.log(coin);
-                if (coin.symbol.toLowerCase() === "btc") this.fetchedAPIData.bitCoin = coin.current_price;
-                else if (coin.symbol.toLowerCase() === "eth") this.fetchedAPIData.bitCoin = coin.current_price;
-                else if (coin.symbol.toLowerCase() === "bnb") this.fetchedAPIData.bitCoin = coin.current_price;
+                if (coin.symbol.toLowerCase() === "btc") {
+                    this.fetchedAPIData.bitCoinPreviousPrice = this.fetchedAPIData.bitCoinCurrentPrice;
+                    this.fetchedAPIData.bitCoinCurrentPrice = coin.current_price;
+                } else if (coin.symbol.toLowerCase() === "eth") {
+                    this.fetchedAPIData.ethereumPreviousPrice = this.fetchedAPIData.ethereumCurrentPrice;
+                    this.fetchedAPIData.ethereumCurrentPrice = coin.current_price;
+                } else if (coin.symbol.toLowerCase() === "bnb") {
+                    this.fetchedAPIData.BinanceCoinPreviousPrice = this.fetchedAPIData.BinanceCoinCurrentPrice;
+                    this.fetchedAPIData.BinanceCoinCurrentPrice = coin.current_price;
+                }
             });
             return true;
         } catch (error) {
