@@ -1,24 +1,31 @@
 # Assignment, Dynamic Chart with Real-Time Data (Geekster MERN Stack Module 4)
-
+Real time current price of Bitcoin, Ethereum and BinanceCoin will be fetched and rendered on chart using graph.js and animation provided using anime.js
 
 ![](thumbnail.png)
 <!-- ![](mvcDiagram.png) -->
 
-# How to set up the development environment on yoururs local machine
-## Installation (npm will automatically downlaod and install the required dependencies from package.json)
+# 1. How to set up the development environment on yoururs local machine
+## 1.1 Installation (npm will automatically downlaod and install the required dependencies from package.json)
+```bash
 git clone https://github.com/Alex21c/GeeksterM4AssignmentDynamic-Chart-with-Real-Time-Data.git 
 npm install 
+```
 
-## Run 
+## 1.2 Run 
+```bash
 npm run start
+```
 
-## Build
+## 1.3 Build
+```bash
 npm run build
+```
 
-## to clear parcel cache (useful during build process)
+## 1.4 to clear parcel cache (useful during build process)
+```bash
 rm -rf .parcel-cache
-
-# Tech. Stack Used:
+```
+# 2. Tech. Stack Used:
 
 + [Parcel.js JavaScript Bundler](https://parceljs.org/)
 + [Babel.js JavaScript Compiler](https://babeljs.io/)
@@ -36,8 +43,8 @@ rm -rf .parcel-cache
 + [GitHub](https://github.com/)
 + [VS Code](https://code.visualstudio.com/)
 
-# Hosted Version of the Project:
+# 3. Hosted Version of the Project:
 [Geekster M4 Assignment&mdash;Dynamic Chart with Real-Time Data](https://alex21c.github.io/GeeksterM4AssignmentDynamic-Chart-with-Real-Time-Data/)
 
-# Author
+# 4. Author
 [Abhishek kumar](https://www.linkedin.com/in/alex21c/), ([Geekster](https://geekster.in/) MERN Stack FS-14 Batch)
