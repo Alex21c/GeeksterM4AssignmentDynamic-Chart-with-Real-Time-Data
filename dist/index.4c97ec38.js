@@ -754,31 +754,22 @@ class View {
         let amIallowedToUpdateChart = false;
         if (chartName === "chartGenuineBitCoin") {
             // console.log( this.model.fetchedAPIData.bitCoinCurrentPrice ,  this.model.fetchedAPIData.bitCoinPreviousPrice);
-            if (this.model.fetchedAPIData.bitCoinCurrentPrice === this.model.fetchedAPIData.bitCoinPreviousPrice) {
-                // then there is no need to update chart 
-                console.warn("INFO: currentPrice and previousPrices are same for bitcoin, so no need to update the chart");
-                return;
-            }
+            if (this.model.fetchedAPIData.bitCoinCurrentPrice === this.model.fetchedAPIData.bitCoinPreviousPrice) // then there is no need to update chart 
+            console.warn("INFO: currentPrice and previousPrices are same for bitcoin, so no need to update the chart");
             // otherwise
             currentPrice = this.model.fetchedAPIData.bitCoinCurrentPrice;
             amIallowedToUpdateChart = true;
         } else if (chartName === "chartGenuineEthereum") {
             // console.log(  this.model.fetchedAPIData.ethereumCurrentPrice ,  this.model.fetchedAPIData.ethereumPreviousPrice);
-            if (this.model.fetchedAPIData.ethereumCurrentPrice === this.model.fetchedAPIData.ethereumPreviousPrice) {
-                // then there is no need to update chart 
-                console.warn("INFO: currentPrice and previousPrices are same for etherium, so no need to update the chart");
-                return;
-            }
+            if (this.model.fetchedAPIData.ethereumCurrentPrice === this.model.fetchedAPIData.ethereumPreviousPrice) // then there is no need to update chart 
+            console.warn("INFO: currentPrice and previousPrices are same for etherium, so no need to update the chart");
             // otherwise
             currentPrice = this.model.fetchedAPIData.ethereumCurrentPrice;
             amIallowedToUpdateChart = true;
         } else if (chartName === "chartGenuineBinanceCoin") {
             // console.log(  this.model.fetchedAPIData.ethereumCurrentPrice ,  this.model.fetchedAPIData.ethereumPreviousPrice);
-            if (this.model.fetchedAPIData.BinanceCoinCurrentPrice === this.model.fetchedAPIData.BinanceCoinPreviousPrice) {
-                // then there is no need to update chart 
-                console.warn("INFO: currentPrice and previousPrices are same for binanceCoin, so no need to update the chart");
-                return;
-            }
+            if (this.model.fetchedAPIData.BinanceCoinCurrentPrice === this.model.fetchedAPIData.BinanceCoinPreviousPrice) // then there is no need to update chart 
+            console.warn("INFO: currentPrice and previousPrices are same for binanceCoin, so no need to update the chart");
             // otherwise
             currentPrice = this.model.fetchedAPIData.BinanceCoinCurrentPrice;
             amIallowedToUpdateChart = true;

@@ -169,7 +169,7 @@ class View{
       if(this.model.fetchedAPIData.bitCoinCurrentPrice === this.model.fetchedAPIData.bitCoinPreviousPrice){
         // then there is no need to update chart 
         console.warn('INFO: currentPrice and previousPrices are same for bitcoin, so no need to update the chart');
-        return;
+        // return;
       }
       // otherwise
         currentPrice = this.model.fetchedAPIData.bitCoinCurrentPrice;
@@ -179,7 +179,7 @@ class View{
       if(this.model.fetchedAPIData.ethereumCurrentPrice === this.model.fetchedAPIData.ethereumPreviousPrice){
         // then there is no need to update chart 
         console.warn('INFO: currentPrice and previousPrices are same for etherium, so no need to update the chart');
-        return;
+        // return;
       }
       // otherwise
         currentPrice = this.model.fetchedAPIData.ethereumCurrentPrice;
@@ -189,7 +189,7 @@ class View{
       if(this.model.fetchedAPIData.BinanceCoinCurrentPrice === this.model.fetchedAPIData.BinanceCoinPreviousPrice){
         // then there is no need to update chart 
         console.warn('INFO: currentPrice and previousPrices are same for binanceCoin, so no need to update the chart');
-        return;
+        // return;
       }
       // otherwise
         currentPrice = this.model.fetchedAPIData.BinanceCoinCurrentPrice;
