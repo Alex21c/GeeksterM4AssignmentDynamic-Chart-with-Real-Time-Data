@@ -37,7 +37,7 @@ rm -rf .parcel-cache
 + [VS Code](https://code.visualstudio.com/)
 
 # Hosted Version of the Project:
-[Geekster M4 Assignment&mdash;Dynamic Chart with Real-Time Data](https://alex21c.github.io/GeeksterM4AssignmentInteractiveDataVisualization/)
+[Geekster M4 Assignment&mdash;Dynamic Chart with Real-Time Data](https://alex21c.github.io/GeeksterM4AssignmentDynamic-Chart-with-Real-Time-Data/)
 
 # Author
 [Abhishek kumar](https://www.linkedin.com/in/alex21c/), ([Geekster](https://geekster.in/) MERN Stack FS-14 Batch)
