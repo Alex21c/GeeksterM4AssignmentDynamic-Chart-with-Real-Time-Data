@@ -4,6 +4,20 @@
 ![](thumbnail.png)
 <!-- ![](mvcDiagram.png) -->
 
+# How to set up the development environment on yoururs local machine
+## Installation (npm will automatically downlaod and install the required dependencies from package.json)
+git clone https://github.com/Alex21c/GeeksterM4AssignmentDynamic-Chart-with-Real-Time-Data.git 
+npm install 
+
+## Run 
+npm run start
+
+## Build
+npm run build
+
+## to clear parcel cache (useful during build process)
+rm -rf .parcel-cache
+
 # Tech. Stack Used:
 
 + [Parcel.js JavaScript Bundler](https://parceljs.org/)

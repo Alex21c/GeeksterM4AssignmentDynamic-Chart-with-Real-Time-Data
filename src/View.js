@@ -186,20 +186,20 @@ class View{
         amIallowedToUpdateChart=true;
     }else if(chartName === 'chartGenuineBinanceCoin'){
       // console.log(  this.model.fetchedAPIData.ethereumCurrentPrice ,  this.model.fetchedAPIData.ethereumPreviousPrice);
-      if(this.model.fetchedAPIData.ethereumCurrentPrice === this.model.fetchedAPIData.ethereumPreviousPrice){
+      if(this.model.fetchedAPIData.BinanceCoinCurrentPrice === this.model.fetchedAPIData.BinanceCoinPreviousPrice){
         // then there is no need to update chart 
         console.warn('INFO: currentPrice and previousPrices are same for binanceCoin, so no need to update the chart');
         return;
       }
       // otherwise
-        currentPrice = this.model.fetchedAPIData.ethereumCurrentPrice;
+        currentPrice = this.model.fetchedAPIData.BinanceCoinCurrentPrice;
         amIallowedToUpdateChart=true;
     }
 
 
     // update the chart
       if(amIallowedToUpdateChart){
-        let newLabel = (Number(chart.data.labels.at(-1).replace('s', '')) + 5  + 's');    
+        let newLabel = (Number(chart.data.labels.at(-1).replace('s', '')) + 15  + 's');    
         chart.data.labels.push(newLabel);
         chart.data.datasets[0].data.push(currentPrice);    
         chart.update();    
@@ -253,14 +253,18 @@ class View{
         options: {...this.chartMetadataTemplate.options}
       });
        //activate real time data fetch       
-        setInterval(()=>{     
+        
           if(chartsData.name === 'chartFake'){
             // console.log(`i'm here`)
-            this.updateFakeDataChart(chart);
+            setInterval(()=>{     
+              this.updateFakeDataChart(chart);
+            }, 5000);
           }else{
-            this.updateGenuineChartData(chart, chartsData.name);
+            setInterval(()=>{     
+              this.updateGenuineChartData(chart, chartsData.name);
+            },15000);
           }     
-        },5000);
+      
 
     //   this.resizeChart(ctx);
       setTimeout(()=>{
