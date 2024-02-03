@@ -7,8 +7,8 @@
     "parcel": "^2.11.0",
     "tailwindcss": "^3.4.1"
   },
-  "scripts": {
-    "start": "parcel src/index.html",
+  "scripts": {    
+    "start": "npx concurrently  \"parcel src/index.html\" \"tailwindcss -i src/index.css -o src/tailwind.css --watch \"",
     "build": "parcel build src/index.html"
   },
   "dependencies": {

@@ -3,7 +3,7 @@
 @tailwind utilities;
 /* 
 Command for Tailwind build || live cache refresh
-npx tailwindcss -i index.css -o tailwind.css --watch 
+npx tailwindcss -i src/index.css -o src/tailwind.css --watch 
 */
 
 :root {
