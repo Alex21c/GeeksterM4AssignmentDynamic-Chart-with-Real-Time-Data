@@ -818,45 +818,43 @@ class View {
     }
     generateChart(chartsData) {
         let chart = chartsData.chart;
-        if (chart) chart.destroy();
         // console.log(chartData.data.labels);
-        setTimeout(()=>{
-            chart = new (0, _autoDefault.default)(chartsData.ctx, {
-                type: chartsData.chartType,
-                data: {
-                    ...chartsData.data
-                },
-                options: {
-                    ...this.chartMetadataTemplate.options
-                }
+        chart = new (0, _autoDefault.default)(chartsData.ctx, {
+            type: chartsData.chartType,
+            data: {
+                ...chartsData.data
+            },
+            options: {
+                ...this.chartMetadataTemplate.options
+            }
+        });
+        //activate real time data fetch       
+        if (chartsData.name === "chartFake") // console.log(`i'm here`)
+        setInterval(()=>{
+            this.updateFakeDataChart(chart);
+        }, 5000);
+        else setInterval(()=>{
+            this.updateGenuineChartData(chart, chartsData.name);
+        }, 15000);
+        //   this.resizeChart(ctx);
+        window.addEventListener("load", ()=>{
+            console.log("trying to animate!");
+            (0, _animeEsJsDefault.default)({
+                targets: `#${chartsData.name}`,
+                scale: [
+                    {
+                        value: .7,
+                        easing: "easeOutSine",
+                        duration: 300
+                    },
+                    {
+                        value: 1,
+                        easing: "easeInOutQuad",
+                        duration: 1500
+                    }
+                ]
             });
-            //activate real time data fetch       
-            if (chartsData.name === "chartFake") // console.log(`i'm here`)
-            setInterval(()=>{
-                this.updateFakeDataChart(chart);
-            }, 5000);
-            else setInterval(()=>{
-                this.updateGenuineChartData(chart, chartsData.name);
-            }, 15000);
-            //   this.resizeChart(ctx);
-            setTimeout(()=>{
-                (0, _animeEsJsDefault.default)({
-                    targets: "#myChart",
-                    scale: [
-                        {
-                            value: .7,
-                            easing: "easeOutSine",
-                            duration: 300
-                        },
-                        {
-                            value: 1,
-                            easing: "easeInOutQuad",
-                            duration: 1500
-                        }
-                    ]
-                });
-            }, 100);
-        }, 300);
+        });
     }
 }
 exports.default = View;

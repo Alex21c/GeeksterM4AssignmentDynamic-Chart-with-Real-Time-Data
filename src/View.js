@@ -240,12 +240,9 @@ class View{
   generateChart(chartsData){
     let chart = chartsData.chart;
     
-    
-    if(chart){
-      chart.destroy();
-    }    
+      
     // console.log(chartData.data.labels);
-    setTimeout(()=>{
+
       
       chart = new Chart(chartsData.ctx, {
         type: chartsData.chartType, // good one are: pie, bar, doughnut
@@ -267,18 +264,23 @@ class View{
       
 
     //   this.resizeChart(ctx);
-      setTimeout(()=>{
+      window.addEventListener('load', ()=>{
+        console.log('trying to animate!');
         anime({
-          targets: '#myChart',
+          targets: `#${chartsData.name}`,
           scale: [
             {value: .7, easing: 'easeOutSine', duration: 300},
             {value: 1, easing: 'easeInOutQuad', duration: 1500}
           ],
-
+  
         });
-      },100);
+      });
 
-    },300);
+      
+      
+      
+
+
 
 
   }  
