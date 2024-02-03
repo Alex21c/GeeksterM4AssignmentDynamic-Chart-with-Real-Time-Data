@@ -4,7 +4,7 @@ Real time current price of Bitcoin, Ethereum and BinanceCoin will be fetched and
 ![](thumbnail.png)
 <!-- ![](mvcDiagram.png) -->
 
-# 1. How to set up the development environment on yoururs local machine
+# 1. How to set up the development environment on yours local machine
 ## 1.1 Installation (npm will automatically downlaod and install the required dependencies from package.json)
 ```bash
 git clone https://github.com/Alex21c/GeeksterM4AssignmentDynamic-Chart-with-Real-Time-Data.git 
@@ -27,6 +27,7 @@ rm -rf .parcel-cache
 ```
 # 2. Tech. Stack Used:
 
++ [API coingecko](https://www.coingecko.com/)
 + [Parcel.js JavaScript Bundler](https://parceljs.org/)
 + [Babel.js JavaScript Compiler](https://babeljs.io/)
 + [regenerator-runtime](https://www.npmjs.com/package/regenerator-runtime)
