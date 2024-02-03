@@ -31,7 +31,7 @@ class View{
           data: {
             labels: ['0s'],
             datasets: [{
-              label: 'ETH (USD)',
+              label: 'BTC (USD)',
               data: [42000],
               borderWidth: 1,
             }]

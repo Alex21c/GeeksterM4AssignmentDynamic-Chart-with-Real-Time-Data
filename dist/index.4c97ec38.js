@@ -622,7 +622,7 @@ class View {
                     ],
                     datasets: [
                         {
-                            label: "ETH (USD)",
+                            label: "BTC (USD)",
                             data: [
                                 42000
                             ],
